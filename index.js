@@ -2,14 +2,14 @@ const http = require('http');
 
 const fs = require('fs');
 
-const paginaTecnico = fs.readFileSync('tecnicos.html');
+const paginaEdificios = fs.readFileSync('edificios.html');
 
 const servidor = http.createServer((request, response) => {
     //console.log(request.url);
     
 
-    if(request.url === '/tecnicos'){
-        return response.end(paginaTecnico);
+    if(request.url === '/edificios'){
+        return response.end(paginaEdificios);
     } else if(request.url === '/contacto'){
         return response.end('pagina Contacto');
     } else if(request.url === '/'){
