@@ -1,3 +1,4 @@
+
 // const http = require('http');
 
 // const fs = require('fs');
@@ -19,9 +20,10 @@
 //         response.end('pagina no encontrada');
 //     }
     
-    
 // });
 // servidor.listen(3000);
+
+
 const path = require('path');
 const express = require('express');
 
@@ -43,4 +45,5 @@ app.get('/', (request, response) =>{
     response.send({
     nombre: 'ivan'
     })
-})
+});
+servidor.listen(3000);
