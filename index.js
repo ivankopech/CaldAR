@@ -2,15 +2,15 @@ const http = require('http');
 
 const fs = require('fs');
 
-const paginaTecnico = fs.readFileSync('tecnicos.html');
+const paginaServicios = fs.readFileSync('servicioTecnico.html');
 
 const servidor = http.createServer((request, response) => {
     //console.log(request.url);
     
 
-    if(request.url === '/tecnicos'){
-        return response.end(paginaTecnico);
-    } else if(request.url === '/contacto'){
+    if(request.url === '/serviciotecnico'){
+        return response.end(paginaServicios);
+    } else if(request.url === '/serviciotecnico'){
         return response.end('pagina Contacto');
     } else if(request.url === '/'){
         return response.end('pagina Inicio');
