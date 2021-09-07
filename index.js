@@ -39,7 +39,7 @@ const express = require('express');
 
 const app = express();
 
-app.listen(4000, () => {
+app.listen(3000, () => {
     console.log('app corriendo en puerto 4000');
 })
 
@@ -59,7 +59,7 @@ app.get('/', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'constructoras.html'));
 })
 app.get('/constructoras', (request, response) => {
-    response.sendFile(path.resolve(__dirname, 'constructora.json'));
+    response.sendFile(path.resolve(__dirname, 'constructoras.json'));
 })
 
 
