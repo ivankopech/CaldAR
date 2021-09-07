@@ -3,37 +3,36 @@
 
 // const fs = require('fs');
 
-<<<<<<< HEAD
 
-const paginaServicios = fs.readFileSync('servicioTecnico.html');
+// const paginaServicios = fs.readFileSync('servicioTecnico.html');
 
 
-const servidor = http.createServer((request, response) => {
-    //console.log(request.url);
+// const servidor = http.createServer((request, response) => {
+//     //console.log(request.url);
 
-    if(request.url === '/serviciotecnico'){
-        return response.end(paginaServicios);
-    } else if(request.url === '/serviciotecnico'){
+//     if(request.url === '/serviciotecnico'){
+//         return response.end(paginaServicios);
+//     } else if(request.url === '/serviciotecnico'){
 
-    if(request.url === '/tecnicos'){
-        return response.end(paginaTecnico);
-    } else if(request.url === '/contacto'){
+//     if(request.url === '/tecnicos'){
+//         return response.end(paginaTecnico);
+//     } else if(request.url === '/contacto'){
  
-        return response.end('pagina Contacto');
-    } else if(request.url === '/'){
-        return response.end('pagina Inicio');
-    } else{
+//         return response.end('pagina Contacto');
+//     } else if(request.url === '/'){
+//         return response.end('pagina Inicio');
+//     } else{
  
-        // response.writeHead(404);
+//         // response.writeHead(404);
 
-        response.writeHead(404);
+//         response.writeHead(404);
 
-        response.end('pagina no encontrada');
-    }
+//         response.end('pagina no encontrada');
+//     }
     
     
-});
-servidor.listen(3000);
+// });
+// servidor.listen(3000);
 
 
 // const express = require('express');
@@ -57,7 +56,6 @@ servidor.listen(3000);
 //     })
 // })
 
-=======
 // const paginaTecnico = fs.readFileSync('tecnicos.html');
 
 // const servidor = http.createServer((request, response) => {
@@ -96,9 +94,4 @@ app.get('/tecnicos', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'tecnicos.json'));
 })
 
-app.get('/', (request, response) =>{
-    response.send({
-    nombre: 'ivan'
-    })
-})
->>>>>>> 211d44a15cb02deb00415bd1de2a53238f9f7983
+
