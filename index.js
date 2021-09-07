@@ -9,8 +9,6 @@ const paginaServicios = fs.readFileSync('servicioTecnico.html');
 
 const servidor = http.createServer((request, response) => {
     //console.log(request.url);
-    
-
 
     if(request.url === '/serviciotecnico'){
         return response.end(paginaServicios);
