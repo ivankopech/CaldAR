@@ -1,4 +1,3 @@
-
 // const http = require('http');
 
 // const fs = require('fs');
@@ -39,26 +38,13 @@ const express = require('express');
 
 const app = express();
 
-app.listen(4000, () => {
+app.listen(3000, () => {
     console.log('app corriendo en puerto 4000');
 })
 
-//rutas
-// app.get('/', (request, response) => {
-//     response.json({
-//         nombre: 'ivan'
-//     });
-// })
-
-// app.get('/tecnicos', (request, response) =>{
-//     response.send({
-//     nombre: 'ivan'
-//     })
-// })
 app.get('/', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'servicioTecnico.html'));
 })
 app.get('/serviciotecnico', (request, response) => {
-    response.sendFile(path.resolve(__dirname, 'servivcioTecnico.json'));
+    response.sendFile(path.resolve(__dirname, 'servicioTecnico.json'));
 })
-
