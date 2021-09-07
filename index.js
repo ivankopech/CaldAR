@@ -1,50 +1,49 @@
-<<<<<<< HEAD
 
-const http = require('http');
+// const http = require('http');
 
-const fs = require('fs');
-
-
-const paginaServicios = fs.readFileSync('servicioTecnico.html');
+// const fs = require('fs');
 
 
-const servidor = http.createServer((request, response) => {
-    //console.log(request.url);
+// const paginaServicios = fs.readFileSync('servicioTecnico.html');
 
-    if(request.url === '/serviciotecnico'){
-        return response.end(paginaServicios);
-    } else if(request.url === '/serviciotecnico'){
 
-    if(request.url === '/tecnicos'){
-        return response.end(paginaTecnico);
-    } else if(request.url === '/contacto'){
+// const servidor = http.createServer((request, response) => {
+//     //console.log(request.url);
+
+//     if(request.url === '/serviciotecnico'){
+//         return response.end(paginaServicios);
+//     } else if(request.url === '/serviciotecnico'){
+
+//     if(request.url === '/tecnicos'){
+//         return response.end(paginaTecnico);
+//     } else if(request.url === '/contacto'){
  
-        return response.end('pagina Contacto');
-    } else if(request.url === '/'){
-        return response.end('pagina Inicio');
-    } else{
+//         return response.end('pagina Contacto');
+//     } else if(request.url === '/'){
+//         return response.end('pagina Inicio');
+//     } else{
  
-        // response.writeHead(404);
+//         // response.writeHead(404);
 
-        response.writeHead(404);
+//         response.writeHead(404);
 
-        response.end('pagina no encontrada');
-    }
+//         response.end('pagina no encontrada');
+//     }
     
     
-});
-servidor.listen(3000);
+// });
+// servidor.listen(3000);
 
+const path = require('path');
+const express = require('express');
 
-// const express = require('express');
+const app = express();
 
-// const app = express();
+app.listen(4000, () => {
+    console.log('app corriendo en puerto 4000');
+})
 
-// app.listen(3000, () => {
-//     console.log('app corriendo en puerto 3000');
-// })
-
-// //rutas
+//rutas
 // app.get('/', (request, response) => {
 //     response.json({
 //         nombre: 'ivan'
@@ -56,7 +55,10 @@ servidor.listen(3000);
 //     nombre: 'ivan'
 //     })
 // })
+app.get('/', (request, response) => {
+    response.sendFile(path.resolve(__dirname, 'constructora.html'));
+})
+app.get('/constructora', (request, response) => {
+    response.sendFile(path.resolve(__dirname, 'constructora.json'));
+})
 
-=======
-console.log('hi');
->>>>>>> 54eb7db8b75c92d5498f2ec4455daab4315488f5
