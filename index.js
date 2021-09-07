@@ -77,6 +77,7 @@
 // });
 // servidor.listen(3000);
 
+
 const path = require('path');
 const express = require('express');
 
@@ -86,12 +87,10 @@ app.listen(3000, () => {
     console.log('app corriendo en puerto 3000');
 })
 
-//rutas
 app.get('/', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'tecnicos.html'));
 })
 app.get('/tecnicos', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'tecnicos.json'));
 })
-
 
