@@ -40,21 +40,10 @@ const express = require('express');
 const app = express();
 
 app.listen(3000, () => {
-    console.log('app corriendo en puerto 4000');
+    console.log('app corriendo en puerto 3000');
 })
 
-//rutas
-// app.get('/', (request, response) => {
-//     response.json({
-//         nombre: 'ivan'
-//     });
-// })
 
-// app.get('/tecnicos', (request, response) =>{
-//     response.send({
-//     nombre: 'ivan'
-//     })
-// })
 app.get('/', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'constructoras.html'));
 })
