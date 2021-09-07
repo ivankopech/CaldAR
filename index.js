@@ -56,9 +56,9 @@ app.listen(4000, () => {
 //     })
 // })
 app.get('/', (request, response) => {
-    response.sendFile(path.resolve(__dirname, 'constructora.html'));
+    response.sendFile(path.resolve(__dirname, 'constructoras.html'));
 })
-app.get('/constructora', (request, response) => {
+app.get('/constructoras', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'constructora.json'));
 })
 
