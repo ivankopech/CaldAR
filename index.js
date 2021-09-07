@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 const http = require('http');
 
@@ -57,6 +56,3 @@ servidor.listen(3000);
 //     })
 // })
 
-=======
-console.log('hi');
->>>>>>> 54eb7db8b75c92d5498f2ec4455daab4315488f5
