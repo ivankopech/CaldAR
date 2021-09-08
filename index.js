@@ -34,7 +34,7 @@
 // });
 // servidor.listen(3000);
 
-
+const path = require('path');
 const express = require('express');
 
 const app = express();
@@ -43,16 +43,13 @@ app.listen(3000, () => {
     console.log('app corriendo en puerto 3000');
 })
 
-//rutas
 app.get('/', (request, response) => {
-    response.json({
-        nombre: 'ivan'
-    });
+    response.sendFile(path.resolve(__dirname, 'constructoras.html'));
+})
+app.get('/constructoras', (request, response) => {
+    response.sendFile(path.resolve(__dirname, 'constructoras.json'));
 })
 
-app.get('/tecnicos', (request, response) =>{
-    response.send({
-    nombre: 'ivan'
-    })
-})
+
+
 
