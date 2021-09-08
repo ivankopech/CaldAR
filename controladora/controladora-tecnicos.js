@@ -107,7 +107,7 @@ const eliminarTecnico = (req,res) =>{
     const encuentra = tecnico.some(c => c.id === parseInt(req.params.id));
     
     if (encuentra) {
-        constructora = tecnico.filter(c => c.id !== parseInt(req.params.id));
+        tecnico = tecnico.filter(c => c.id !== parseInt(req.params.id));
 
         fs.writeFileSync('datos/datos-tecnicos.json', JSON.stringify(tecnico, null, 2));
         res.json({ msg: 'tecnico eliminado', tecnico });
