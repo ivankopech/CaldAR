@@ -43,7 +43,6 @@ app.listen(3000, () => {
     console.log('app corriendo en puerto 3000');
 })
 
-
 app.get('/', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'constructoras.html'));
 })
