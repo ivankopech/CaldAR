@@ -10,7 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/ivankopech/CaldAR.git"
   },
-  "author": "IVAN KOPECH",
+
+  "author": "ivan",
+
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ivankopech/CaldAR/issues"
