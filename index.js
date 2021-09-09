@@ -14,7 +14,7 @@
 //     } else if(request.url === '/serviciotecnico'){
 
 //     if(request.url === '/tecnicos'){
-//         return response.end(paginaTecnico);
+//         return response.end('paginaTecnico');
 //     } else if(request.url === '/contacto'){
  
 //         return response.end('pagina Contacto');
@@ -33,6 +33,8 @@
 // });
 // servidor.listen(3000);
 
+
+
 const path = require('path');
 const express = require('express');
 
@@ -48,3 +50,4 @@ app.get('/', (request, response) => {
 app.get('/serviciotecnico', (request, response) => {
     response.sendFile(path.resolve(__dirname, 'servicioTecnico.json'));
 })
+
