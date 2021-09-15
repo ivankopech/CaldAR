@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
+    "babel-node": "babel-node --presets='@babel/preset-env' --ignore='foo|bar|baz'",
+    "start": "node src/index.js",
     "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ivankopech/CaldAR.git"
   },
-  "author": "IVAN KOPECH",
+  "author": "ivan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ivankopech/CaldAR/issues"
