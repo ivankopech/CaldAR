@@ -34,7 +34,7 @@
 // servidor.listen(3000);
 const express = require('express');
 const mongoose = require('mongoose');
-const rutaServicioTecnico = require('./rutas/rutas-servicioTecnico');
+const rutaServicioTecnico = require('./rutas/rutas-servicioTecnico.js');
 
 const app = express();
 app.use(express.json());

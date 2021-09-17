@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const tecnicos = fs.readFileSync('datos/datos-tecnicos.json');
+const tecnicos = fs.readFileSync('datos/datos-servicioTecnico.json');
 
 let tecnico = JSON.parse(tecnicos);
 
