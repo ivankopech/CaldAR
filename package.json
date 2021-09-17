@@ -21,8 +21,7 @@
   "homepage": "https://github.com/ivankopech/CaldAR#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^6.0.6",
-    "nodemon": "^2.0.12"
+    "mongoose": "^6.0.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.4",
