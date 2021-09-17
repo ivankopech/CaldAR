@@ -33,6 +33,8 @@
     
 // });
 // servidor.listen(3000);
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 const rutaConstructora = require('./rutas/constructora-rutas');
@@ -55,6 +57,8 @@ mongoose.connect('mongodb+srv://JERE:JERE1234@cluster0.mukqz.mongodb.net/myFirst
 app.listen(puerto, () => {
     console.log(`example app listening at http://localhost:${puerto}`)
 })
+
+
 // const path = require('path');
 // const express = require('express');
 
@@ -64,12 +68,12 @@ app.listen(puerto, () => {
 //     console.log('app corriendo en puerto 3000');
 // })
 
-app.get('/', (request, response) => {
-    response.sendFile(path.resolve(__dirname, 'constructoras.html'));
-})
-app.get('/constructoras', (request, response) => {
-    response.sendFile(path.resolve(__dirname, 'constructoras.json'));
-})
+// app.get('/', (request, response) => {
+//     response.sendFile(path.resolve(__dirname, 'constructoras.html'));
+// })
+// app.get('/constructoras', (request, response) => {
+//     response.sendFile(path.resolve(__dirname, 'constructoras.json'));
+// })
 
 
 
