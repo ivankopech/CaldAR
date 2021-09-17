@@ -32,22 +32,43 @@
     
 // });
 // servidor.listen(3000);
-
-
-
-const path = require('path');
 const express = require('express');
+const mongoose = require('mongoose');
+const rutaServicioTecnico = require('./rutas/rutas-servicioTecnico');
 
 const app = express();
+app.use(express.json());
+app.use(rutaServicioTecnico);
 
-app.listen(3000, () => {
-    console.log('app corriendo en puerto 4000');
+const path = require('path');
+const puerto = 3000;
+
+mongoose.connect('mongodb+srv://JERE:JERE1234@cluster0.mukqz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+    .then((result) => {
+        console.log('base de datos conectada');
+    })
+    .catch((error) => {
+        console.log(`base de datos no conectada, error: ${error} `)
+    })
+
+app.listen(puerto, () => {
+    console.log(`example app listening at http://localhost:${puerto}`)
 })
 
-app.get('/', (request, response) => {
-    response.sendFile(path.resolve(__dirname, 'servicioTecnico.html'));
-})
-app.get('/serviciotecnico', (request, response) => {
-    response.sendFile(path.resolve(__dirname, 'servicioTecnico.json'));
-})
+
+// const path = require('path');
+// const express = require('express');
+
+// const app = express();
+
+// app.listen(3000, () => {
+//     console.log('app corriendo en puerto 4000');
+// })
+
+// app.get('/', (request, response) => {
+//     response.sendFile(path.resolve(__dirname, 'servicioTecnico.html'));
+// })
+// app.get('/serviciotecnico', (request, response) => {
+//     response.sendFile(path.resolve(__dirname, 'servicioTecnico.json'));
+// })
 
