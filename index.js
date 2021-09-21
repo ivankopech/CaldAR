@@ -57,16 +57,7 @@ app.listen(puerto, () => {
     console.log(`example app listening at http://localhost:${puerto}`)
 })
 
-// app.listen(3000, () => {
-//     console.log('app corriendo en puerto 3000');
-// })
 
 
-// //rutas
-// app.get('/html', (request, response) => {
-//     response.sendFile(path.resolve(__dirname, 'edificios.html'));
-// })
-// app.get('/edificios', (request, response) => {
-//     response.sendFile(path.resolve(__dirname, 'edificios.json'));
-// })
+
 
