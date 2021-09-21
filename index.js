@@ -43,8 +43,8 @@ app.use(express.json());
 app.use(rutaEdificios);
 
 const path = require('path');
-// const puerto = process.env.PORT || 3000;
-const puerto =  3000;
+const PORT = process.env.PORT || 3000;
+
 mongoose.connect('mongodb+srv://JERE:JERE1234@cluster0.mukqz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
     .then((result) => {
         console.log('base de datos conectada');
@@ -53,8 +53,8 @@ mongoose.connect('mongodb+srv://JERE:JERE1234@cluster0.mukqz.mongodb.net/myFirst
         console.log(`base de datos no conectada, error: ${error} `)
     })
 
-app.listen(puerto, () => {
-    console.log(`example app listening at http://localhost:${puerto}`)
+app.listen(PORT, () => {
+    console.log(`example app listening at http://localhost:${PORT}`)
 })
 
 // app.listen(3000, () => {
