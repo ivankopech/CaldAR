@@ -43,8 +43,8 @@ app.use(express.json());
 app.use(rutaEdificios);
 
 const path = require('path');
-const puerto = process.env.PORT || 3000;
-
+// const puerto = process.env.PORT || 3000;
+const puerto =  3000;
 mongoose.connect('mongodb+srv://JERE:JERE1234@cluster0.mukqz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
     .then((result) => {
         console.log('base de datos conectada');
