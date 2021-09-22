@@ -30,20 +30,34 @@
 //     }
     
     
-// });
+
+
+// }});
 // servidor.listen(3000);
 
+// const path = require('path');
+// const express = require('express');
 
 const express = require('express');
 const mongoose = require('mongoose');
 const rutaEdificios = require('./rutas/rutas-edificios');
+const rutaTecnicos = require('./rutas/rutas-tecnicos');
+const rutaConstructora = require('./rutas/constructora-rutas');
 
 const app = express();
 app.use(express.json());
 app.use(rutaEdificios);
 
+app.use(rutaTecnicos);
+app.use(rutaConstructora);
+
+const path = require('path');
+const puerto = 3000;
+=======
+
 const path = require('path');
 const PORT = process.env.PORT || 3000;
+
 
 mongoose.connect('mongodb+srv://JERE:JERE1234@cluster0.mukqz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
     .then((result) => {
@@ -53,8 +67,9 @@ mongoose.connect('mongodb+srv://JERE:JERE1234@cluster0.mukqz.mongodb.net/myFirst
         console.log(`base de datos no conectada, error: ${error} `)
     })
 
-app.listen(PORT, () => {
-    console.log(`example app listening at http://localhost:${PORT}`)
+app.listen(puerto, () => {
+    console.log(`example app listening at http://localhost:${puerto}`)
+
 })
 
 // app.listen(3000, () => {
@@ -62,6 +77,18 @@ app.listen(PORT, () => {
 // })
 
 
+
+// app.listen(3000, () => {
+//     console.log('app corriendo en puerto 3000');
+// })
+
+// app.get('/', (request, response) => {
+//     response.sendFile(path.resolve(__dirname, 'tecnicos.html'));
+// })
+// app.get('/tecnicos', (request, response) => {
+//     response.sendFile(path.resolve(__dirname, 'tecnicos.json'));
+// })
+=======
 // //rutas
 // app.get('/html', (request, response) => {
 //     response.sendFile(path.resolve(__dirname, 'edificios.html'));
