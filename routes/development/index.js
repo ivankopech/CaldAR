@@ -1,6 +1,8 @@
 const express = require('express');
 
-const controladora = require('../index');
+
+const controladora = require('');
+
 
 const rutas = express.Router();
 
