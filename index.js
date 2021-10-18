@@ -1,79 +1,48 @@
 
-// const http = require('http');
-
-// const fs = require('fs');
-
-
-// const paginaServicios = fs.readFileSync('servicioTecnico.html');
-
-
-// const servidor = http.createServer((request, response) => {
-//     //console.log(request.url);
-
-//     if(request.url === '/serviciotecnico'){
-//         return response.end(paginaServicios);
-//     } else if(request.url === '/serviciotecnico'){
-
-//     if(request.url === '/tecnicos'){
-//         return response.end(paginaTecnico);
-//     } else if(request.url === '/contacto'){
- 
-//         return response.end('pagina Contacto');
-//     } else if(request.url === '/'){
-//         return response.end('pagina Inicio');
-//     } else{
- 
-//         // response.writeHead(404);
-
-//         response.writeHead(404);
-
-//         response.end('pagina no encontrada');
-//     }
-    
-    
-// });
-// servidor.listen(3000);
-
-
 const express = require('express');
 const mongoose = require('mongoose');
-const rutaConstructora = require('./rutas/constructora-rutas');
+const cors = require('cors');
+require('dotenv/config');
+const CONEXION_DB = process.env.DB_MONGODB;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
+const rutas = require('./routes');
+
 app.use(express.json());
-app.use(rutaConstructora);
+app.use('/', rutas);
+app.use(cors());
 
-const path = require('path');
-const puerto = 3000;
+const rutaEdificios = require('./routes/rutas-edificios');
+const rutaTecnicos = require('./routes/rutas-tecnicos');
+const rutaConstructora = require('./routes/constructora-rutas');
 
-mongoose.connect('mongodb+srv://JERE:JERE1234@cluster0.mukqz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
-    .then((result) => {
-        console.log('base de datos conectada');
-    })
-    .catch((error) => {
-        console.log(`base de datos no conectada, error: ${error} `)
-    })
+app.use('/edificios',rutaEdificios);
+app.use('/tecnicos',rutaTecnicos);
+app.use('/constructora',rutaConstructora);
 
-app.listen(puerto, () => {
+//Uso del metodo de conexion de Mongoose
+mongoose
+.connect(CONEXION_DB)
+.then(()=>{
+    //INDICARA ESTE MENSAJE EN LA CONSOLA SI SE PUDO CONECTAR A LA BASE DE DATOS
+    console.log('Database connected')  
+.catch((error)=>{
+    //INDICARA ESTE MENSAJE EN LA CONSOLA SI NO SE PUDO CONECTAR A LA BASE DE DATOS
+    console.log( `Database not connected: ${error}`)
+});
+
+
+app.get('/',(req,res) => {
+    res.send('Server running in Heroku');
+
+})
+app.listen(PORT, () => {
     console.log(`example app listening at http://localhost:${puerto}`)
+
+
 })
 
-
-// const path = require('path');
-// const express = require('express');
-
-// const app = express();
-
-// app.listen(3000, () => {
-//     console.log('app corriendo en puerto 3000');
-// })
-
-// app.get('/', (request, response) => {
-//     response.sendFile(path.resolve(__dirname, 'constructoras.html'));
-// })
-// app.get('/constructoras', (request, response) => {
-//     response.sendFile(path.resolve(__dirname, 'constructoras.json'));
-// })
 
 
 
