@@ -11,4 +11,8 @@ router.post('/tecnicos',tecnicosControladora.crearTecnico);
 router.delete('/tecnicos/:id', tecnicosControladora.eliminarTecnico);
 router.put('/tecnicos/:id',tecnicosControladora.actualizarTecnicos);
 
+
 module.exports = router;
+
+
+
