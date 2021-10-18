@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const tecnicosControladora = require('./controllers/controladora-tecnicos.js.js.js');
+
+const tecnicosControladora = require('../controladora/controladora-tecnicos.js');
+
 
 router.get('/tecnicos', tecnicosControladora.obtenerTecnicos);
 router.get('/tecnicos/buscar',tecnicosControladora.obtenerTecnicosPorApellido);

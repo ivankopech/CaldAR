@@ -1,99 +1,44 @@
-// const http = require('http');
-
-// const fs = require('fs');
-
-
-// const paginaServicios = fs.readFileSync('servicioTecnico.html');
-
-
-// const servidor = http.createServer((request, response) => {
-//     //console.log(request.url);
-
-//     if(request.url === '/serviciotecnico'){
-//         return response.end(paginaServicios);
-//     } else if(request.url === '/serviciotecnico'){
-
-//     if(request.url === '/tecnicos'){
-//         return response.end('paginaTecnico');
-//     } else if(request.url === '/contacto'){
- 
-//         return response.end('pagina Contacto');
-//     } else if(request.url === '/'){
-//         return response.end('pagina Inicio');
-//     } else{
- 
-//         // response.writeHead(404);
-
-//         response.writeHead(404);
-
-//         response.end('pagina no encontrada');
-//     }
-    
-    
-
-
-// }});
-// servidor.listen(3000);
-
-// const path = require('path');
-// const express = require('express');
-
 const express = require('express');
 const mongoose = require('mongoose');
-const rutaEdificios = require('./rutas/rutas-edificios');
-const rutaTecnicos = require('./rutas/rutas-tecnicos');
-const rutaConstructora = require('./rutas/constructora-rutas');
+const cors = require('cors');
+require('dotenv/config');
+const CONEXION_DB = process.env.DB_MONGODB;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
+const rutas = require('./routes');
+
 app.use(express.json());
-app.use(rutaEdificios);
+app.use('/', rutas);
+app.use(cors());
 
-app.use(rutaTecnicos);
-app.use(rutaConstructora);
+const rutaEdificios = require('./routes/rutas-edificios');
+const rutaTecnicos = require('./routes/rutas-tecnicos');
+const rutaConstructora = require('./routes/constructora-rutas');
 
-const path = require('path');
-const puerto = 3000;
-=======
+app.use('/edificios',rutaEdificios);
+app.use('/tecnicos',rutaTecnicos);
+app.use('/constructora',rutaConstructora);
 
-const path = require('path');
-const PORT = process.env.PORT || 3000;
+//Uso del metodo de conexion de Mongoose
+mongoose
+.connect(CONEXION_DB)
+.then(()=>{
+    //INDICARA ESTE MENSAJE EN LA CONSOLA SI SE PUDO CONECTAR A LA BASE DE DATOS
+    console.log('Database connected')
+})
+.catch((error)=>{
+    //INDICARA ESTE MENSAJE EN LA CONSOLA SI NO SE PUDO CONECTAR A LA BASE DE DATOS
+    console.log( `Database not connected: ${error}`)
+});
 
-
-mongoose.connect('mongodb+srv://JERE:JERE1234@cluster0.mukqz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
-    .then((result) => {
-        console.log('base de datos conectada');
-    })
-    .catch((error) => {
-        console.log(`base de datos no conectada, error: ${error} `)
-    })
-
-app.listen(puerto, () => {
+app.get('/',(req,res) => {
+    res.send('Server running in Heroku');
+})
+app.listen(PORT, () => {
     console.log(`example app listening at http://localhost:${puerto}`)
 
 })
 
-// app.listen(3000, () => {
-//     console.log('app corriendo en puerto 3000');
-// })
 
-
-
-// app.listen(3000, () => {
-//     console.log('app corriendo en puerto 3000');
-// })
-
-// app.get('/', (request, response) => {
-//     response.sendFile(path.resolve(__dirname, 'tecnicos.html'));
-// })
-// app.get('/tecnicos', (request, response) => {
-//     response.sendFile(path.resolve(__dirname, 'tecnicos.json'));
-// })
-=======
-// //rutas
-// app.get('/html', (request, response) => {
-//     response.sendFile(path.resolve(__dirname, 'edificios.html'));
-// })
-// app.get('/edificios', (request, response) => {
-//     response.sendFile(path.resolve(__dirname, 'edificios.json'));
-// })
 
