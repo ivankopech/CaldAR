@@ -1,3 +1,4 @@
+
 console.log('hi');
 
 const { response, request } = require('express');
@@ -25,44 +26,3 @@ app.get('/calderas', (request, response)=> {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const http = require('http');
-
-// const fs = require('fs')
-
-// //variables para llamar los html
-// const paginaInicio = fs.readFileSync('index.html')
-// const paginaCaldera = fs.readFileSync('calderas.html')
-
-
-
-// const server = http.createServer((request, response) => {
-//     console.log(request.url)
-
-//     if(request.url === '/'){
-//         return response.end(paginaInicio)
-//     }else if(request.url === '/calderas'){
-//         return response.end(paginaCaldera)
-
-//     }else{
-//         response.writeHead(404)
-//         response.end('Pagina no encontrada')
-//     }
- 
-// })
-// server.listen(3001)
