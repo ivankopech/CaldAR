@@ -1,3 +1,4 @@
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -26,11 +27,13 @@ mongoose
 .then(()=>{
     //INDICARA ESTE MENSAJE EN LA CONSOLA SI SE PUDO CONECTAR A LA BASE DE DATOS
     console.log('Database connected')
+
 })
 .catch((error)=>{
     //INDICARA ESTE MENSAJE EN LA CONSOLA SI NO SE PUDO CONECTAR A LA BASE DE DATOS
     console.log( `Database not connected: ${error}`)
 });
+
 
 app.get('/',(req,res) => {
     res.send('Server running in Heroku');
@@ -39,6 +42,7 @@ app.listen(PORT, () => {
     console.log(`example app listening at http://localhost:${puerto}`)
 
 })
+
 
 
 
