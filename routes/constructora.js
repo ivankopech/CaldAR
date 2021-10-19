@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const constructoraControladora = require('../controladora/constructora-controladora.js');
+const constructionCompany = require('../controllers/constructora');
 
-router.get('/constructoras', constructoraControladora.obtenerContructoras);
-router.get('/constructoras/buscar',constructoraControladora.obtenerContructorasPorNombre);
-router.get('/constructoras/:id',constructoraControladora.obtenerContructorasPorID);
-router.post('/constructoras',constructoraControladora.crearConstructora);
-router.delete('/constructoras/:id', constructoraControladora.eliminarContructora);
-router.put('/constructoras/:id',constructoraControladora.actualizarContructoras);
+router.get('/constructora', constructionCompany.getConstructionCompanies);
+router.get('/constructora/buscar',constructionCompany.getConstructionCompaniesByName);
+router.get('/constructora/:id',constructionCompany.getConstructionCompaniesById);
+router.post('/constructora',constructionCompany.addConstructionCompany);
+router.delete('/constructora/:id', constructionCompany.deleteConstructionCompanies);
+router.put('/constructora/:id',constructionCompany.updateConstructionCompanies);
 
 module.exports = router;
