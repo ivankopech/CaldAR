@@ -12,7 +12,7 @@ const crearConstructora = (req, res) => {
     } = req.body;
 
     if (!id || !nombre ) {
-        res.status(400).send("Campo imcompleto");
+        res.status(400).send("Incomplete field");
         return;
     }
 
@@ -39,7 +39,7 @@ const obtenerContructorasPorID = (req,res) =>{
         res.json(constructoras.filter(c => c.id === parseInt(req.params.id)));
     }
     else{
-        res.status(400).json({ msg: `No se encontro constructora con el ID : ${req.params.id}`});
+        res.status(400).json({ msg: `No builder found with ID : ${req.params.id}`});
     }
 }
 
@@ -50,7 +50,7 @@ const obtenerContructorasPorNombre= (req,res) =>{
         res.json(constructoras.filter(c => c.nombre.toLowerCase() === (req.query.nombre.toLowerCase())));
     }
     else{
-        res.status(400).json({ msg: `No se encontro constructora con el nombre :${req.query.nombre}`});
+        res.status(400).json({ msg: `No builder found with the name :${req.query.nombre}`});
     }
 }
 
@@ -71,16 +71,16 @@ const actualizarContructoras = (req, res) => {
         };
 
         if (!nombre) {
-            res.status(400).send("Campo Incompleto");
+            res.status(400).send("Incomplete field");
             return;
         }
 
         constructora[indice] = contructoraActualizada;
 
         fs.writeFileSync('datos/datos-constructora.json', JSON.stringify(constructora, null, 2));
-        res.json({ msg: 'Constructora Actualizada', contructoraActualizada });
+        res.json({ msg: 'Updated builder', contructoraActualizada });
     } else {
-        res.status(400).json({ msg: `No hay constructora con el ID : ${req.params.id}` });
+        res.status(400).json({ msg: `There is no builder with the ID : ${req.params.id}` });
     }
 };
 
@@ -94,9 +94,9 @@ const eliminarContructora = (req,res) =>{
         constructora = constructora.filter(c => c.id !== parseInt(req.params.id));
 
         fs.writeFileSync('datos/datos-constructora.json', JSON.stringify(constructora, null, 2));
-        res.json({ msg: 'Contructora Eliminada', constructora });
+        res.json({ msg: 'Builder removed', constructora });
     } else {
-        res.status(400).json({ msg: `No se encontro constructora con el ID : ${req.params.id}` });
+        res.status(400).json({ msg: `No builder found with ID : ${req.params.id}` });
     }
 }
 

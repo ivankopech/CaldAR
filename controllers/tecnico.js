@@ -14,7 +14,7 @@ const crearTecnico = (req, res) => {
     } = req.body;
 
     if (!id || !nombre || !apellido || !genero ) {
-        res.status(400).send("Campo imcompleto");
+        res.status(400).send("Incomplete field");
         return;
     }
 
@@ -43,7 +43,7 @@ const obtenerTecnicoPorID = (req,res) =>{
         res.json(tecnicos.filter(c => c.id === parseInt(req.params.id)));
     }
     else{
-        res.status(400).json({ msg: `No se encontro tecnico con el ID: ${req.params.id}`});
+        res.status(400).json({ msg: `Technician with the ID was not found: ${req.params.id}`});
     }
 }
 
@@ -54,7 +54,7 @@ const obtenerTecnicosPorApellido = (req,res) =>{
         res.json(tecnicos.filter(c => c.apellido.toLowerCase() === (req.query.apellido.toLowerCase())));
     }
     else{
-        res.status(400).json({ msg: `No se encontro tecnico con el apellido: ${req.query.apellido}`});
+        res.status(400).json({ msg: `No technician found with the surname: ${req.query.apellido}`});
     }
 }
 
@@ -79,24 +79,24 @@ const actualizarTecnicos = (req, res) => {
         };
 
         if (!nombre) {
-            res.status(400).send("nombre incompleto");
+            res.status(400).send("Incomplete name");
             return;
         }
         if (!apellido) {
-            res.status(400).send("apellido incompleto");
+            res.status(400).send("Incomplete suername");
             return;
         }
         if (!genero) {
-            res.status(400).send("genero incompleto");
+            res.status(400).send("Incomplete gender");
             return;
         }
 
         tecnico[indice] = tecnicoActualizado;
 
         fs.writeFileSync('datos/datos-tecnicos.json', JSON.stringify(tecnico, null, 2));
-        res.json({ msg: 'tecnico actualizado', tecnicoActualizado });
+        res.json({ msg: 'Updated technician', tecnicoActualizado });
     } else {
-        res.status(400).json({ msg: `No hay tecnico con el ID: ${req.params.id}` });
+        res.status(400).json({ msg: `There is no technician with the ID: ${req.params.id}` });
     }
 };
 
@@ -110,9 +110,9 @@ const eliminarTecnico = (req,res) =>{
         tecnico = tecnico.filter(c => c.id !== parseInt(req.params.id));
 
         fs.writeFileSync('datos/datos-tecnicos.json', JSON.stringify(tecnico, null, 2));
-        res.json({ msg: 'tecnico eliminado', tecnico });
+        res.json({ msg: 'Technician removed', tecnico });
     } else {
-        res.status(400).json({ msg: `No se encontro tecnico con el ID: ${req.params.id}` });
+        res.status(400).json({ msg: `Technician with the ID was not found: ${req.params.id}` });
     }
 }
 

@@ -15,7 +15,7 @@ const crearServiciosTecnicos = (req, res) => {
     } = req.body;
 
     if (!id || !tecnico ||fecha|| Id_edificio_contructora ) {
-        res.status(400).send("Campo imcompleto");
+        res.status(400).send("Incomplete field");
         return;
     }
 
@@ -44,7 +44,7 @@ const obtenerServicioTecnicoPorID = (req,res) =>{
         res.json(servicioTecnicos.filter(c => c.id === parseInt(req.params.id)));
     }
     else{
-        res.status(400).json({ msg: `No se encontro el servicio tecnico con el ID : ${req.params.id}`});
+        res.status(400).json({ msg: `The technical service with the ID was not found : ${req.params.id}`});
     }
 }
 
@@ -55,7 +55,7 @@ const obtenerServicioTecnicoPorTecnico= (req,res) =>{
         res.json(servicioTecnicos.filter(c => c.tecnico.toLowerCase() === (req.query.tecnico.toLowerCase())));
     }
     else{
-        res.status(400).json({ msg: `No se encontro servicio tecnico con el tecnico :${req.query.tecnico}`});
+        res.status(400).json({ msg: `No technical service found with the technician :${req.query.tecnico}`});
     }
 }
 
@@ -79,16 +79,16 @@ const actualizarServicioTecnicos = (req, res) => {
         };
 
         if (!tecnico) {
-            res.status(400).send("Campo Incompleto");
+            res.status(400).send("Incomplete field");
             return;
         }
 
         servicioTecnico[indice] = servicioTecnicoActualizado;
 
         fs.writeFileSync('datos/datos-servicioTecnico.json', JSON.stringify(servicioTecnico, null, 2));
-        res.json({ msg: 'Servicio tecnico Actualizado', servicioTecnicoActualizado });
+        res.json({ msg: 'Updated technical service', servicioTecnicoActualizado });
     } else {
-        res.status(400).json({ msg: `No hay servicio tecnico con el ID : ${req.params.id}` });
+        res.status(400).json({ msg: `There is no technical service with the ID : ${req.params.id}` });
     }
 };
 
@@ -102,9 +102,9 @@ const eliminarServicioTecnico = (req,res) =>{
         servicioTecnico = servicioTecnico.filter(c => c.id !== parseInt(req.params.id));
 
         fs.writeFileSync('datos/datos-servicioTecnico.json', JSON.stringify(servicioTecnico, null, 2));
-        res.json({ msg: 'servicio tecnico eliminado', servicioTecnico });
+        res.json({ msg: 'Technical service removed', servicioTecnico });
     } else {
-        res.status(400).json({ msg: `No se encontro servicio tecnico con el ID : ${req.params.id}` });
+        res.status(400).json({ msg: `No technical service found with ID : ${req.params.id}` });
     }
 }
 

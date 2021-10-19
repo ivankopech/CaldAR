@@ -9,12 +9,10 @@ const crearCalderas = (req, res) => {
         id,
         tipo,
         fecha
-
-
     } = req.body;
 
     if (!id || !tipo ||fecha ) {
-        res.status(400).send("Campo imcompleto");
+        res.status(400).send("Incomplete field");
         return;
     }
 
@@ -42,7 +40,7 @@ const obtenerCalderaPorID = (req,res) =>{
         res.json(calderas.filter(c => c.id === parseInt(req.params.id)));
     }
     else{
-        res.status(400).json({ msg: `No se encontro caldera con el ID : ${req.params.id}`});
+        res.status(400).json({ msg: `No boiler found with ID : ${req.params.id}`});
     }
 }
 
@@ -53,7 +51,7 @@ const obtenerCalderaPorTipo= (req,res) =>{
         res.json(calderas.filter(c => c.tipo.toLowerCase() === (req.query.tipo.toLowerCase())));
     }
     else{
-        res.status(400).json({ msg: `No se encontro caldera con el tipo :${req.query.tipo}`});
+        res.status(400).json({ msg: `No boiler found with type :${req.query.tipo}`});
     }
 }
 
@@ -76,16 +74,16 @@ const actualizarCalderas = (req, res) => {
         };
 
         if (!tipo) {
-            res.status(400).send("Campo Incompleto");
+            res.status(400).send("Incomplete field");
             return;
         }
 
         caldera[indice] = calderaActualizada;
 
         fs.writeFileSync('datos/datos-calderas.json', JSON.stringify(caldera, null, 2));
-        res.json({ msg: 'Caldera Actualizada', calderaActualizada });
+        res.json({ msg: 'Updated Boiler', calderaActualizada });
     } else {
-        res.status(400).json({ msg: `No hay caldera con el ID : ${req.params.id}` });
+        res.status(400).json({ msg: `There is no boiler with the ID : ${req.params.id}` });
     }
 };
 
@@ -99,9 +97,9 @@ const eliminarCaldera = (req,res) =>{
         caldera = caldera.filter(c => c.id !== parseInt(req.params.id));
 
         fs.writeFileSync('datos/datos-calderas.json', JSON.stringify(caldera, null, 2));
-        res.json({ msg: 'Caldera Eliminada', caldera });
+        res.json({ msg: 'Boiler removed', caldera });
     } else {
-        res.status(400).json({ msg: `No se encontro caldera con el ID : ${req.params.id}` });
+        res.status(400).json({ msg: `No boiler found with ID : ${req.params.id}` });
     }
 }
 
