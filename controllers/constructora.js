@@ -50,11 +50,7 @@ const obtenerContructorasPorNombre= (req,res) =>{
         res.json(constructoras.filter(c => c.nombre.toLowerCase() === (req.query.nombre.toLowerCase())));
     }
     else{
-<<<<<<< HEAD:controllers/controladora.js
-        res.status(400).json({ msg: `No builder found with the name:${req.query.nombre}`});
-=======
         res.status(400).json({ msg: `No builder found with the name :${req.query.nombre}`});
->>>>>>> development:controllers/constructora.js
     }
 }
 
