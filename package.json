@@ -1,35 +1,50 @@
 {
   "name": "caldar",
   "version": "1.0.0",
+
   "description": "CaldAr",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel-node": "babel-node --presets='@babel/preset-env' --ignore='foo|bar|baz'",
+
+
     "start": "node index.js",
+
     "dev": "nodemon index.js"
+
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ivankopech/CaldAR.git"
   },
+
   "author": "ivan",
+
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ivankopech/CaldAR/issues"
   },
   "homepage": "https://github.com/ivankopech/CaldAR#readme",
   "dependencies": {
+
+    "express": "^4.17.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
     "mongoose": "^6.0.6"
+
+
   },
   "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-google": "^0.14.0",
+    "husky": "^7.0.0",
     "@babel/cli": "^7.15.4",
     "@babel/core": "^7.15.5",
     "@babel/node": "^7.15.4",
     "@babel/preset-env": "^7.15.6",
     "nodemon": "^2.0.12"
+
+
   }
 }

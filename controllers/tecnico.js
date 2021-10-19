@@ -110,9 +110,9 @@ const eliminarTecnico = (req,res) =>{
         tecnico = tecnico.filter(c => c.id !== parseInt(req.params.id));
 
         fs.writeFileSync('datos/datos-tecnicos.json', JSON.stringify(tecnico, null, 2));
-        res.json({ msg: 'tecnico eliminado', tecnico });
+        res.json({ msg: 'Technician removed', tecnico });
     } else {
-        res.status(400).json({ msg: `No se encontro tecnico con el ID: ${req.params.id}` });
+        res.status(400).json({ msg: `Technician with the ID was not found: ${req.params.id}` });
     }
 }
 
