@@ -14,7 +14,7 @@ const crearEdificio = (req, res) => {
     } = req.body;
 
     if (!id || !nombre || !calle || !altura ) {
-        res.status(400).send("Campo imcompleto");
+        res.status(400).send("Incomplete field");
         return;
     }
 
@@ -43,7 +43,7 @@ const obtenerEdificioPorID = (req,res) =>{
         res.json(edificios.filter(c => c.id === parseInt(req.params.id)));
     }
     else{
-        res.status(400).json({ msg: `No se encontro edificio con el ID: ${req.params.id}`});
+        res.status(400).json({ msg: `No building with ID found: ${req.params.id}`});
     }
 }
 
@@ -54,7 +54,7 @@ const obtenerEdificioPorNombre = (req,res) =>{
         res.json(edificios.filter(c => c.nombre.toLowerCase() === (req.query.nombre.toLowerCase())));
     }
     else{
-        res.status(400).json({ msg: `No se encontro edificio con el nombre: ${req.query.nombre}`});
+        res.status(400).json({ msg: `No building found with the name: ${req.query.nombre}`});
     }
 }
 
@@ -79,24 +79,24 @@ const actualizarEdificios = (req, res) => {
         };
 
         if (!nombre) {
-            res.status(400).send('nombre incompleto');
+            res.status(400).send('Incomplete name');
             return;
         }
         if (!calle) {
-            res.status(400).send('calle incompleta');
+            res.status(400).send('Incomplete surname');
             return;
         }
         if (!altura) {
-            res.status(400).send('altura incompleta incompleto');
+            res.status(400).send('Incomplete heigth');
             return;
         }
 
         edificio[indice] = edificioActualizado;
 
         fs.writeFileSync('datos/datos-edificios.json', JSON.stringify(edificio, null, 2));
-        res.json({ msg: 'edificio actualizado', edificioActualizado });
+        res.json({ msg: 'Building update', edificioActualizado });
     } else {
-        res.status(400).json({ msg: `No hay edificio con el ID: ${req.params.id}` });
+        res.status(400).json({ msg: `There is no building with the ID: ${req.params.id}` });
     }
 };
 
