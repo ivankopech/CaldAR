@@ -4,7 +4,7 @@ const calderas = fs.readFileSync('datos/datos-calderas.json');
 
 let caldera = JSON.parse(calderas);
 
-const crearCalderas = (req, res) => {
+const addBoiler = (req, res) => {
     const {
         id,
         tipo,
@@ -29,12 +29,12 @@ const crearCalderas = (req, res) => {
 
 };
 
-const obtenerCalderas = (req,res) =>{
+const getBoilers = (req,res) =>{
     res.json(caldera);
 }
 
 
-const obtenerCalderaPorID = (req,res) =>{
+const getBoilersById = (req,res) =>{
     const encuentra = caldera.some(c => c.id === parseInt(req.params.id));
     if (encuentra) {
         res.json(calderas.filter(c => c.id === parseInt(req.params.id)));
@@ -45,7 +45,7 @@ const obtenerCalderaPorID = (req,res) =>{
 }
 
 
-const obtenerCalderaPorTipo= (req,res) =>{
+const getBoilersByType= (req,res) =>{
     const encuentra = caldera.some(c =>c.tipo.toLowerCase() === (req.query.tipo.toLowerCase()));
     if (encuentra) {
         res.json(calderas.filter(c => c.tipo.toLowerCase() === (req.query.tipo.toLowerCase())));
@@ -56,7 +56,7 @@ const obtenerCalderaPorTipo= (req,res) =>{
 }
 
 
-const actualizarCalderas = (req, res) => {
+const updateBoilers = (req, res) => {
     const id = parseInt(req.params.id);
     const {
         tipo = '',
@@ -90,7 +90,7 @@ const actualizarCalderas = (req, res) => {
 
 
 
-const eliminarCaldera = (req,res) =>{
+const deleteBoiler = (req,res) =>{
     const encuentra = caldera.some(c => c.id === parseInt(req.params.id));
     
     if (encuentra) {
@@ -104,10 +104,10 @@ const eliminarCaldera = (req,res) =>{
 }
 
 module.exports ={
-    obtenerCalderas,
-    obtenerCalderaPorID,
-    obtenerCalderaPorTipo,
-    crearCalderas,
-    actualizarCalderas,
-    eliminarCaldera
+    getBoilers,
+    getBoilersById,
+    getBoilersByType,
+    addBoiler,
+    updateBoilers,
+    deleteBoiler
 }
