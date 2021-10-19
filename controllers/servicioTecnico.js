@@ -86,7 +86,7 @@ const actualizarServicioTecnicos = (req, res) => {
         servicioTecnico[indice] = servicioTecnicoActualizado;
 
         fs.writeFileSync('datos/datos-servicioTecnico.json', JSON.stringify(servicioTecnico, null, 2));
-        res.json({ msg: 'Updated technical service', servicioTecnicoActualizado });
+        res.json({ msg: 'Servicio tecnico Actualizado', servicioTecnicoActualizado });
     } else {
         res.status(400).json({ msg: `There is no technical service with the ID : ${req.params.id}` });
     }

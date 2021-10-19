@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-
 const servicioTecnicoControladora = require('../controladora/controladora-servicioTecnico.js');
-
 
 
 

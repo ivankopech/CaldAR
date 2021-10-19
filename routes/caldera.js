@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const calderasControladora = require('../controladora/controladora-calderas');
+const boilerController = require('../controllers/caldera');
 
-router.get('/calderas', calderasControladora.obtenerCalderas);
-router.get('/calderas/buscar',calderasControladora.obtenerCalderaPorTipo);
-router.get('/calderas/:id',calderasControladora.obtenerCalderaPorID);
-router.post('/calderas',calderasControladora.crearCalderas);
-router.delete('/calderas/:id', calderasControladora.eliminarCaldera);
-router.put('/calderas/:id',calderasControladora.actualizarCalderas);
+router.get('/calderas', boilerController.getBoilers);
+router.get('/calderas/buscar',boilerController.getBoilersByType);
+router.get('/calderas/:id',boilerController.getBoilersById);
+router.post('/calderas',boilerController.addBoiler);
+router.delete('/calderas/:id', boilerController.deleteBoiler);
+router.put('/calderas/:id',boilerController.updateBoilers);
 
 module.exports = router;
