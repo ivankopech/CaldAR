@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const TecnicoSchema = Schema({
+const TechncianSchema = Schema({
   nombre: {
     type: String,
     required: [true, 'The name field is required'],
@@ -27,4 +27,4 @@ const TecnicoSchema = Schema({
   },
 });
 
-module.exports = model('tecnicos', TecnicoSchema);
+module.exports = model('technician', TechncianSchema);
