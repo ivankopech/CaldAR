@@ -4,7 +4,7 @@ const constructoras = fs.readFileSync('datos/datos-constructora.json');
 
 let constructora = JSON.parse(constructoras);
 
-const crearConstructora = (req, res) => {
+const addConstructionCompany = (req, res) => {
     const {
         id,
         nombre
@@ -28,12 +28,12 @@ const crearConstructora = (req, res) => {
 
 };
 
-const obtenerContructoras = (req,res) =>{
+const getConstructionCompanies = (req,res) =>{
     res.json(constructora);
 }
 
 
-const obtenerContructorasPorID = (req,res) =>{
+const getConstructionCompaniesById = (req,res) =>{
     const encuentra = constructora.some(c => c.id === parseInt(req.params.id));
     if (encuentra) {
         res.json(constructoras.filter(c => c.id === parseInt(req.params.id)));
@@ -44,7 +44,7 @@ const obtenerContructorasPorID = (req,res) =>{
 }
 
 
-const obtenerContructorasPorNombre= (req,res) =>{
+const getConstructionCompaniesByName= (req,res) =>{
     const encuentra = constructora.some(c =>c.nombre.toLowerCase() === (req.query.nombre.toLowerCase()));
     if (found) {
         res.json(constructoras.filter(c => c.nombre.toLowerCase() === (req.query.nombre.toLowerCase())));
@@ -55,7 +55,7 @@ const obtenerContructorasPorNombre= (req,res) =>{
 }
 
 
-const actualizarContructoras = (req, res) => {
+const updateConstructionCompanies = (req, res) => {
     const id = parseInt(req.params.id);
     const {
         nombre = '',
@@ -87,7 +87,7 @@ const actualizarContructoras = (req, res) => {
 
 
 
-const eliminarContructora = (req,res) =>{
+const deleteConstructionCompanies = (req,res) =>{
     const encuentra = constructora.some(c => c.id === parseInt(req.params.id));
     
     if (encuentra) {
@@ -101,10 +101,10 @@ const eliminarContructora = (req,res) =>{
 }
 
 module.exports ={
-    obtenerContructoras,
-    obtenerContructorasPorID,
-    obtenerContructorasPorNombre,
-    crearConstructora,
-    actualizarContructoras,
-    eliminarContructora
+    getConstructionCompanies,
+    getConstructionCompaniesById,
+    getConstructionCompaniesByName,
+    addConstructionCompany,
+    updateConstructionCompanies,
+    deleteConstructionCompanies
 }
