@@ -4,7 +4,7 @@ const servicioTecnicos = fs.readFileSync('datos/datos-servicioTecnico.json');
 
 let servicioTecnico = JSON.parse(servicioTecnicos);
 
-const crearServiciosTecnicos = (req, res) => {
+const createService = (req, res) => {
     const {
         id,
         tecnico,
@@ -33,12 +33,12 @@ const crearServiciosTecnicos = (req, res) => {
 
 };
 
-const obtenerServicioTecnico = (req,res) =>{
+const getServices = (req,res) =>{
     res.json(servicioTecnico);
 }
 
 
-const obtenerServicioTecnicoPorID = (req,res) =>{
+const getServiceByID = (req,res) =>{
     const encuentra = servicioTecnico.some(c => c.id === parseInt(req.params.id));
     if (encuentra) {
         res.json(servicioTecnicos.filter(c => c.id === parseInt(req.params.id)));
@@ -49,7 +49,7 @@ const obtenerServicioTecnicoPorID = (req,res) =>{
 }
 
 
-const obtenerServicioTecnicoPorTecnico= (req,res) =>{
+const getServiceByName= (req,res) =>{
     const encuentra = servicioTecnico.some(c =>c.tecnico.toLowerCase() === (req.query.tecnico.toLowerCase()));
     if (encuentra) {
         res.json(servicioTecnicos.filter(c => c.tecnico.toLowerCase() === (req.query.tecnico.toLowerCase())));
@@ -59,7 +59,7 @@ const obtenerServicioTecnicoPorTecnico= (req,res) =>{
     }
 }
 
-const actualizarServicioTecnicos = (req, res) => {
+const udateService = (req, res) => {
     const id = parseInt(req.params.id);
     const {
         tecnico = '',
@@ -95,7 +95,7 @@ const actualizarServicioTecnicos = (req, res) => {
 
 
 
-const eliminarServicioTecnico = (req,res) =>{
+const deleteService = (req,res) =>{
     const encuentra = caldera.some(c => c.id === parseInt(req.params.id));
     
     if (encuentra) {
@@ -109,10 +109,10 @@ const eliminarServicioTecnico = (req,res) =>{
 }
 
 module.exports ={
-    obtenerServicioTecnico,
-    obtenerServicioTecnicoPorID,
-    obtenerServicioTecnicoPorTecnico,
-    crearServiciosTecnicos,
-    actualizarServicioTecnicos,
-    eliminarServicioTecnico
+    getServices,
+    getServiceByID,
+    getServiceByName,
+    createService,
+    udateService,
+    deleteService
 }
