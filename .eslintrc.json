@@ -1,5 +1,6 @@
 {
     "env": {
+        "node": true,
         "browser": true,
         "es2021": true
     },
@@ -9,5 +10,8 @@
         "sourceType": "module"
     },
     "rules": {
+        "indent": ["error", 3],
+        "quotes": ["error", "single"],
+        "no-console": "error"
     }
 }
